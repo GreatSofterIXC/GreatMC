@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreatMC - Lifesteal Server Store</title>
+    <title>GreatMC - Lifesteal Server Store & Support</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,8 +26,9 @@
         body { background-color: #0b0c10; color: #f3f4f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         .glow-red { box-shadow: 0 0 20px rgba(220, 38, 38, 0.35); }
         .glow-gold { box-shadow: 0 0 20px rgba(234, 179, 8, 0.35); }
-        .gradient-border { border: 1px solid rgba(220, 38, 38, 0.3); }
         .modal-bg { background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); }
+        .chat-scroll::-webkit-scrollbar { width: 4px; }
+        .chat-scroll::-webkit-scrollbar-thumb { background: #dc2626; rounded: 4px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -46,7 +47,7 @@
                 </div>
             </div>
 
-            <!-- Server IP Copy & Discord -->
+            <!-- Server IP Copy, AI Helper & Discord -->
             <div class="flex items-center space-x-3">
                 <button onclick="copyIP()" class="bg-gray-900 hover:bg-gray-800 border border-red-600/50 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition font-mono text-sm group">
                     <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping"></span>
@@ -54,12 +55,17 @@
                     <i class="fa-regular fa-copy text-red-500 group-hover:scale-110 transition"></i>
                 </button>
 
+                <button onclick="openAiModal()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition font-bold text-sm shadow-lg shadow-red-600/30">
+                    <i class="fa-solid fa-robot animate-bounce"></i>
+                    <span>AI Assistant</span>
+                </button>
+
                 <a href="https://discord.gg/EYPmTd49F" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition font-medium text-sm shadow-md shadow-indigo-600/30">
                     <i class="fa-brands fa-discord"></i>
                     <span>Discord</span>
                 </a>
 
-                <button onclick="openStaffModal()" class="bg-red-950 hover:bg-red-900 text-red-300 border border-red-800/60 px-3 py-2 rounded-lg text-sm transition">
+                <button onclick="openStaffModal()" class="bg-red-950 hover:bg-red-900 text-red-300 border border-red-800/60 px-3 py-2 rounded-lg text-sm transition" title="Staff Panel">
                     <i class="fa-solid fa-user-shield"></i>
                 </button>
             </div>
@@ -71,9 +77,9 @@
 
         <!-- Hero Section -->
         <section class="text-center space-y-4 py-6 bg-gradient-to-b from-red-950/30 to-transparent rounded-2xl border border-red-900/20 p-8">
-            <span class="bg-red-600/20 text-red-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-red-500/30">Official Webstore</span>
+            <span class="bg-red-600/20 text-red-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-red-500/30">Official Webstore & Support</span>
             <h2 class="text-4xl md:text-6xl font-black tracking-tight text-white">UPGRADE YOUR <span class="text-red-500">EXPERIENCE</span></h2>
-            <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">Support the GreatMC server and unlock exclusive ranks, coins, perks, and cosmetics instantly on purchase.</p>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">Support the GreatMC server, buy exclusive ranks/coins, or use our AI Assistant for instant glitch & gameplay help!</p>
         </section>
 
         <!-- Category: Ranks -->
@@ -226,6 +232,14 @@
 
     </main>
 
+    <!-- Floating AI Helper Button -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button onclick="openAiModal()" class="bg-gradient-to-r from-red-600 to-red-800 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition duration-300 flex items-center space-x-2 glow-red border border-red-400">
+            <i class="fa-solid fa-headset text-2xl"></i>
+            <span class="hidden md:inline font-bold text-sm pr-1">Glitch & Help AI</span>
+        </button>
+    </div>
+
     <!-- Footer -->
     <footer class="border-t border-gray-800 bg-darkBg/80 py-6 text-center text-gray-500 text-xs">
         <p>&copy; 2026 GreatMC Lifesteal Server. All rights reserved.</p>
@@ -252,14 +266,14 @@
                 <div>
                     <label class="block text-xs text-gray-400 mb-1">Select Payment Gateway</label>
                     <div class="grid grid-cols-3 gap-2">
-                        <button type="button" onclick="selectGateway('bkash', '01700000000')" class="gateway-btn border border-pink-600/40 p-2 rounded-lg text-xs font-bold text-pink-400 hover:bg-pink-950/30">bKash</button>
-                        <button type="button" onclick="selectGateway('nagad', '01800000000')" class="gateway-btn border border-orange-600/40 p-2 rounded-lg text-xs font-bold text-orange-400 hover:bg-orange-950/30">Nagad</button>
-                        <button type="button" onclick="selectGateway('rocket', '01900000000')" class="gateway-btn border border-purple-600/40 p-2 rounded-lg text-xs font-bold text-purple-400 hover:bg-purple-950/30">Rocket</button>
+                        <button type="button" onclick="selectGateway('bkash', '01995545653')" class="gateway-btn border border-pink-600/40 p-2 rounded-lg text-xs font-bold text-pink-400 hover:bg-pink-950/30">bKash</button>
+                        <button type="button" onclick="selectGateway('nagad', '01995545653')" class="gateway-btn border border-orange-600/40 p-2 rounded-lg text-xs font-bold text-orange-400 hover:bg-orange-950/30">Nagad</button>
+                        <button type="button" onclick="selectGateway('rocket', '01995545653')" class="gateway-btn border border-purple-600/40 p-2 rounded-lg text-xs font-bold text-purple-400 hover:bg-purple-950/30">Rocket</button>
                     </div>
                 </div>
 
                 <div id="paymentInstructions" class="hidden bg-gray-900/90 p-3 rounded-lg border border-gray-800 space-y-2 text-xs">
-                    <p class="text-gray-300">Send Payment to this <span id="gatewayName" class="font-bold"></span> number:</p>
+                    <p class="text-gray-300">Send Personal Payment to this <span id="gatewayName" class="font-bold"></span> number:</p>
                     <div class="flex items-center justify-between bg-black p-2 rounded border border-gray-800">
                         <span id="gatewayNumber" class="font-mono text-yellow-400 font-bold"></span>
                         <button onclick="copyNumber()" class="text-red-400 hover:text-red-300"><i class="fa-regular fa-copy"></i> Copy</button>
@@ -301,6 +315,53 @@
         </div>
     </div>
 
+    <!-- AI Helper Assistant Modal -->
+    <div id="aiModal" class="fixed inset-0 modal-bg z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-red-600/40 w-full max-w-lg rounded-2xl p-5 relative flex flex-col h-[550px] shadow-2xl">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-white">GreatMC AI Assistant</h3>
+                        <p class="text-[10px] text-green-400 font-semibold flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Online & Ready
+                        </p>
+                    </div>
+                </div>
+                <button onclick="closeAiModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+
+            <!-- Quick FAQ Topics -->
+            <div class="py-2 flex gap-2 overflow-x-auto text-[11px] no-scrollbar border-b border-gray-800/50">
+                <button onclick="askQuick('How to join server?')" class="bg-gray-800 hover:bg-red-950 hover:text-red-300 text-gray-300 px-2.5 py-1 rounded-full whitespace-nowrap">🎮 How to Join?</button>
+                <button onclick="askQuick('Lost hearts in Lifesteal')" class="bg-gray-800 hover:bg-red-950 hover:text-red-300 text-gray-300 px-2.5 py-1 rounded-full whitespace-nowrap">💔 Lost Hearts?</button>
+                <button onclick="askQuick('Resource pack error / glitch')" class="bg-gray-800 hover:bg-red-950 hover:text-red-300 text-gray-300 px-2.5 py-1 rounded-full whitespace-nowrap">🐛 Glitch / Resource Pack</button>
+                <button onclick="askQuick('How to buy rank?')" class="bg-gray-800 hover:bg-red-950 hover:text-red-300 text-gray-300 px-2.5 py-1 rounded-full whitespace-nowrap">👑 Buy Rank</button>
+            </div>
+
+            <!-- Chat Messages Container -->
+            <div id="chatMessages" class="flex-1 overflow-y-auto chat-scroll py-4 space-y-3 pr-1 text-xs">
+                <div class="flex items-start space-x-2">
+                    <div class="w-7 h-7 bg-red-600 rounded-full flex items-center justify-center text-white text-xs font-bold">AI</div>
+                    <div class="bg-gray-900 border border-gray-800 p-3 rounded-2xl rounded-tl-none max-w-[85%] text-gray-200">
+                        Hello! 👋 Ami **GreatMC Assistant**! Server-er kono **glitch, bug, IP, Lifesteal hearts, resource pack issue, ba Rank purchase** niye problem hole amake bolun, ami shahajjo korbo!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="pt-3 border-t border-gray-800 flex items-center space-x-2">
+                <input type="text" id="aiInput" onkeypress="handleKeyPress(event)" placeholder="Type your problem or glitch..." class="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-red-500">
+                <button onclick="sendMessage()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Staff Panel Modal -->
     <div id="staffModal" class="fixed inset-0 modal-bg z-50 hidden flex items-center justify-center p-4">
         <div class="bg-cardBg border border-red-900/50 w-full max-w-4xl rounded-2xl p-6 relative space-y-5">
@@ -333,7 +394,6 @@
                             </tr>
                         </thead>
                         <tbody id="ordersTableBody" class="divide-y divide-gray-800 text-gray-300">
-                            <!-- JS injected order logs -->
                         </tbody>
                     </table>
                 </div>
@@ -388,7 +448,6 @@
                 return;
             }
 
-            // Capture Client Data
             let userIP = 'Capturing...';
             let location = 'Dhaka, Bangladesh';
             try {
@@ -422,13 +481,78 @@
             currentOrder.email = email;
             currentOrder.status = 'Pending';
 
-            // Save to localStorage
             let existingOrders = JSON.parse(localStorage.getItem('greatmc_orders') || '[]');
             existingOrders.unshift(currentOrder);
             localStorage.setItem('greatmc_orders', JSON.stringify(existingOrders));
 
             document.getElementById('modalStep2').classList.add('hidden');
             document.getElementById('modalStep3').classList.remove('hidden');
+        }
+
+        // AI Helper Functions
+        function openAiModal() {
+            document.getElementById('aiModal').classList.remove('hidden');
+        }
+
+        function closeAiModal() {
+            document.getElementById('aiModal').classList.add('hidden');
+        }
+
+        function askQuick(text) {
+            document.getElementById('aiInput').value = text;
+            sendMessage();
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('aiInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chat = document.getElementById('chatMessages');
+
+            // User Message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'flex items-start space-x-2 justify-end';
+            userDiv.innerHTML = `
+                <div class="bg-red-600 p-3 rounded-2xl rounded-tr-none max-w-[85%] text-white">${text}</div>
+                <div class="w-7 h-7 bg-gray-800 rounded-full flex items-center justify-center text-xs text-gray-300 font-bold">You</div>
+            `;
+            chat.appendChild(userDiv);
+            input.value = '';
+            chat.scrollTop = chat.scrollHeight;
+
+            // AI Processing Response
+            setTimeout(() => {
+                let reply = getAiReply(text.toLowerCase());
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'flex items-start space-x-2';
+                aiDiv.innerHTML = `
+                    <div class="w-7 h-7 bg-red-600 rounded-full flex items-center justify-center text-white text-xs font-bold">AI</div>
+                    <div class="bg-gray-900 border border-gray-800 p-3 rounded-2xl rounded-tl-none max-w-[85%] text-gray-200">${reply}</div>
+                `;
+                chat.appendChild(aiDiv);
+                chat.scrollTop = chat.scrollHeight;
+            }, 500);
+        }
+
+        function getAiReply(msg) {
+            if (msg.includes('ip') || msg.includes('join') || msg.includes('port')) {
+                return "📌 **Server IP:** `Greatmc.2bd.net`<br>📱 **Bedrock Port:** `19132` (Default)<br>💻 Java/Bedrock both supported (1.16 - 1.20+)!";
+            } else if (msg.includes('heart') || msg.includes('lifesteal') || msg.includes('life')) {
+                return "💔 **Lifesteal Mechanics:**<br>- Direct Player-কে মারলে ১টি Heart পাবেন।<br>- মারা গেলে ১টি Heart হারাবেন।<br>- /recipe লিখে Heart craft করার রেসিপি দেখতে পারবেন।";
+            } else if (msg.includes('glitch') || msg.includes('bug') || msg.includes('stuck') || msg.includes('resource pack')) {
+                return "🛠️ **Glitch / Resource Pack Fix:**<br>1. Game exit করে আবার ঢুকুন।<br>2. Resource pack load না হলে Server Resource Pack `Enabled` কিনা নিশ্চিত করুন।<br>3. Stuck হলে `/spawn` বা `/stuck` কমান্ড ট্রাই করুন।<br>4. এছাড়া Discord-এর `#bug-report` চ্যানেলে জানান!";
+            } else if (msg.includes('rank') || msg.includes('buy') || msg.includes('coin') || msg.includes('payment') || msg.includes('bkash')) {
+                return "👑 **How to Buy Rank/Coins:**<br>1. Store পেজ থেকে আপনার পছন্দমতো Rank/Coin সিলেক্ট করুন।<br>2. **bKash / Nagad / Rocket** সিলেক্ট করে **01995545653** নম্বরে টাকা পাঠান।<br>3. TrxID দিয়ে সাবমিট করুন, ইনস্ট্যান্ট ভেরিফাই হয়ে যাবে!";
+            } else if (msg.includes('discord')) {
+                return "💬 **Discord Server:** [Click Here to Join Discord](https://discord.gg/EYPmTd49F)";
+            } else {
+                return "I'm here to help! Server IP: `Greatmc.2bd.net`. Kono specific glitch ba rank purchase niye help lagle detail-e bolun, ba Discord support ticket open korun!";
+            }
         }
 
         // Staff Modal Functions
